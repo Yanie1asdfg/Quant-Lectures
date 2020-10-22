@@ -1,0 +1,21 @@
+
+
+1.将原文件命名为 1.csv 放入此文件夹
+2.将成交文件命名为 2.csv  放入此文件夹
+3.CandlestickItem.py 为画蜡烛图的类
+4.MainUI1.py 为画窗体的类
+5.所用模块
+from PyQt5.QtWidgets import *
+# from pyqtgraph.Qt import QtGui, QtCore
+import sys
+import pyqtgraph as pg
+import pandas as pd
+import numpy as np
+from datetime import datetime
+from CandlestickItem import *
+from PyQt5.QtGui import *
+from PyQt5.QtCore import *
+
+检查pip list中是否有这些模块
+6.打开MainUI1.py 文件运行，出现框体后，点击打开主图
+7.1.csv 文件不要太大，Python 1s 读取 1500行的数据，最好不要超过1M, 数据量大了之后缩放卡顿
