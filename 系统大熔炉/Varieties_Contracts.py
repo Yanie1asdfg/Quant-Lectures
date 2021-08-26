@@ -117,8 +117,8 @@ class Varieties_Contracts():
         for k in exchange:
             for i in range(30):
                 code,name,data = self.spider_single_data(k,i)
-                # if code!=0:
-                #     self.to_mysql(code,name,data)
+                if code!=0:
+                    self.to_mysql(code,name,data)
 
     # 从MySQL获取某个database的表名
     def contlist_from_mysql(self,dbname):
@@ -192,12 +192,13 @@ class Varieties_Contracts():
         for i in tablenames:
             self.datafmysql(i,conn)
         conn.close()  #使用完后记得关掉
-        # print(self.abitrage_dic)
+        print(self.abitrage_dic)
         
     # 获取现货价格
     def get_goods_price(self):
         df = pd.read_csv(r'现货价格.csv',encoding='gb2312')
         self.goods_dict = df.iloc[-1].to_dict()
+        print(self.goods_dict)
         return self.goods_dict
 
     # 生成图片并保存
@@ -251,7 +252,7 @@ class Varieties_Contracts():
         s = [images_size[0]+images_size[1]+images_size[2]+images_size[3],images_size[4]+images_size[5]+images_size[6],images_size[7]+images_size[8],images_size[9]+images_size[10]]
         IMAGE_COLUMN = 3
         IMAGE_ROW = 4
-        IMAGE_c_SIZE = max(images_size)*2+500
+        IMAGE_c_SIZE = max(images_size)*2+700
         IMAGE_r_SIZE = 400
         self.image_compose(IMAGE_ROW,IMAGE_COLUMN,IMAGE_c_SIZE,IMAGE_r_SIZE,imagelist,images_size,IMAGE_SAVE_PATH)
         print('图片已合成......')
@@ -281,6 +282,6 @@ if __name__ == '__main__':
     dict1 = {'白糖':'SR','豆粕':'M','玉米':'C','玉米淀粉':'CS','苹果':'AP','菜粕':'RM','纯碱':'SA','玻璃':'FG','甲醇':'MA','棉花':'CF','尿素':'UR'} 
     vc.get_all_data(dbname,dict1)  #从数据库读取所有data 获取现货
     vc.all_plot()    # 生成图片并保存
-
-    date = '2021-07-30'
+    # date = '2021-08-0'
+    date = str(datetime.now().date())
     vc.syn_images(date)
