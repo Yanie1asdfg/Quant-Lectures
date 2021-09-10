@@ -252,7 +252,7 @@ class Varieties_Contracts():
         s = [images_size[0]+images_size[1]+images_size[2]+images_size[3],images_size[4]+images_size[5]+images_size[6],images_size[7]+images_size[8],images_size[9]+images_size[10]]
         IMAGE_COLUMN = 3
         IMAGE_ROW = 4
-        IMAGE_c_SIZE = max(images_size)*2+700
+        IMAGE_c_SIZE = max(images_size)*3+700
         IMAGE_r_SIZE = 400
         self.image_compose(IMAGE_ROW,IMAGE_COLUMN,IMAGE_c_SIZE,IMAGE_r_SIZE,imagelist,images_size,IMAGE_SAVE_PATH)
         print('图片已合成......')
@@ -279,7 +279,7 @@ if __name__ == '__main__':
     # vc.spider_datas()   # 将东方财富数据写入mysql
 
     dbname = 'db_eastmoney'
-    dict1 = {'白糖':'SR','豆粕':'M','玉米':'C','玉米淀粉':'CS','苹果':'AP','菜粕':'RM','纯碱':'SA','玻璃':'FG','甲醇':'MA','棉花':'CF','尿素':'UR'} 
+    dict1 = {'白糖':'SR','豆粕':'M','玉米':'C','玉米淀粉':'CS','苹果':'AP','菜粕':'RM','纯碱':'SA','玻璃':'FG','甲醇':'MA','棉花':'CF','尿素':'UR','豆油':'Y','棕榈油':'P','菜油':'OI','生猪':'LH','鸡蛋':'JD'} 
     vc.get_all_data(dbname,dict1)  #从数据库读取所有data 获取现货
     vc.all_plot()    # 生成图片并保存
     # date = '2021-08-0'
